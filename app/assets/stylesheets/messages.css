@@ -14,14 +14,38 @@
    .side_bar{
     height: 100px;
     padding: 0 20px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
    }
+     .user-name a {
+       color:#FAFAFA;
+       font-size:16px;
+       text-decoration: none;
+     }
+     .create-chat a{
+        padding:14px;
+        border: 1px solid lightblue;
+        font-size:10px;
+        color:deepskyblue;
+        text-decoration: none;
+     }
+       
+
 
    .room{
     background-color: #2F3E51;
     height: calc(100vh - 100px);
     padding: 0 20px;
+    /* overflow: scroll; */
    }
-   
+     .many-rooms{
+       padding: 20px 0px 40px;
+     }
+       .one-room a{
+        color:white;
+        text-decoration: none;
+       }
 
 
 .right{
