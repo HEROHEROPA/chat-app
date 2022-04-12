@@ -6,13 +6,26 @@
  <%# <a href="#">Tom</a>   edit_user(prefix表示)_path%>
  </p>
  <p class="create-chat">
- <a href="#" >チャットを作成する</a>
+ <%= link_to "チャットを作成する", new_room_path %>
  </p>
  </div>
 
 
 <div class="room">
-  <div class="many-rooms">
+ <% current_user.rooms.each do |room| %>
+    <div class="many-rooms">
+      <div class="one-room">
+        <a href="#"><%= room.name %></a>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+
+
+
+ <%# <div class="many-rooms">
    <div class="one-room">
    <a href="#">techroom1</a>
    </div>
@@ -21,6 +34,4 @@
    <div class="one-room">
    <a href="#">techroom2</a>
    </div>
-  </div>
-</div>
-
+  </div> %>
