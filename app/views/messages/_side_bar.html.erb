@@ -2,7 +2,8 @@
 
 <div class="side_bar">
  <p class="user-name">
- <a href="#">Tom</a>
+ <%= link_to current_user.name, edit_user_path(current_user) %>
+ <%# <a href="#">Tom</a>   edit_user(prefix表示)_path%>
  </p>
  <p class="create-chat">
  <a href="#" >チャットを作成する</a>
