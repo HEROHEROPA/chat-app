@@ -3,19 +3,59 @@
 <div class="main_chat_top">
 <div class="left-top">
     <div class="left-top-title">
-      hogefuga
+      <%# hogefuga %>
+       <%= @room.name %>
     </div>
   </div>
   <div class="right-top">
     <div class="top-button">
-      <a href="#">チャットを終了する</a>
+      <%# <a href="#">チャットを終了する</a> %>
+       <%= link_to "チャットを終了する", room_path(@room), method: :delete %>
     </div>
   </div>
 
 </div>
 
 <div class="main_chat">
-   <div class="message">
+    <%= render partial: 'message', collection: @messages %>
+    <%# collectionオプションを使用する際のポイントとしては、複数要素が入っているインスタンス変数を、collectionオプションの対象に指定することです。
+また、collectionオプションを使用した場合、呼び出した部分テンプレート内では、インスタンス変数から取り出した要素を、部分テンプレート名と同じ変数名で扱うことができます。
+つまり、_hoge.html.erb内において、@hogesから取り出された1つ1つの要素はhogeとして扱うことができます。 %>
+
+
+    <%# <% @hoges.each do |hoge|%>
+  <%# <%= render partial: 'hoge', locals: {hoge: hoge} %> 
+<%# <% end %> 
+</div>
+ 
+<%# form_withのmodelオプションに記述した@roomには「指定のチャットルームのレコード情報」、@messageには「Messageモデルのからのインスタンス（Message.new）」をあらかじめセットしておく必要があります。次に、これらの変数をコントローラーのindexアクションで定義しましょう %>
+
+<%# <div class="main_chat_bottom"> %>
+<%= form_with model: [@room, @message], class: 'main_chat_bottom', local: true do |f| %>
+ <div class="bottom-input">
+ <%= f.text_field :content, class: 'bottom-message', placeholder: 'type a message' %>
+    <%# <input class="bottom-message" placeholder= "type a message"> %>
+     <label class="form-image">
+      <span class="image-file">画像</span>
+      <%# <input type="file" class="hidden"> %>
+      <%= f.file_field :image, class: 'hidden' %>
+    </label>
+  </div>
+  <%# <input class="bottom-submit" type="submit" value="送信"> %>
+  <%= f.submit '送信', class: 'bottom-submit' %>
+  <% end %>
+<%# </div> %>
+
+
+
+
+
+
+
+
+
+
+ <%# <div class="message">
     <div class="upper-message">
       <div class="message-user">
         Tom
@@ -45,20 +85,4 @@
         こんばんは
       </div>
     </div>
-  </div>
-</div>
- 
-
-
-
-<div class="main_chat_bottom">
- <div class="bottom-input">
-    <input class="bottom-message" placeholder= "type a message">
-     <label class="form-image">
-      <span class="image-file">画像</span>
-      <input type="file" class="hidden">
-    </label>
-  </div>
-  <input class="bottom-submit" type="submit" value="送信">
-</div>
-
+  </div> %>
