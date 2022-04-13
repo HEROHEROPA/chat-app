@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   def index
     @message = Message.new
     @room = Room.find(params[:room_id])#@messageには、Message.newで生成した、Messageモデルのインスタンス情報を代入します。
+    @messages = @room.messages.includes(:user)#メッセージを表示させる為にユーザー情報を一緒に一挙に取得（N+1問題）する。
   end
     # @roomには、Room.find(params[:room_id])と記述することで、paramsに含まれているroom_idを代入します。
     # 紐解いて説明すると、直前の問題にあった通りルーティングをネストしているため/rooms/:room_id/messagesといったパスになります。
@@ -13,6 +14,7 @@ class MessagesController < ApplicationController
       if @message.save
         redirect_to room_messages_path(@room)
       else
+        @messages = @room.messages.includes(:user)#@messagesが定義されていないとエラーになってしまいます。そこで、indexアクションと同様に@messagesを定義する必要があります。
         render :index
       end
     end
