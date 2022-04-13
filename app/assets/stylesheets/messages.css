@@ -162,3 +162,10 @@
       margin-left: 15px;
       padding: 0 20px;
     }
+.form{
+  background-color: #DDDDDD;
+  height: 90px;
+  padding: 20px 40px;
+  display: flex;
+  box-sizing: border-box;
+}
