@@ -7,6 +7,7 @@ class User < ApplicationRecord
    validates :name, presence: true #データベースだけでなくモデル側にも制限を儲ける？
    has_many :room_users
    has_many :rooms, through: :room_users
+   has_many :messages
 end
 
 

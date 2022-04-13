@@ -1,3 +1,0 @@
-class RommUser < ApplicationRecord
-  
-end
