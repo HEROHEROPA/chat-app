@@ -169,3 +169,8 @@
   display: flex;
   box-sizing: border-box;
 }
+
+/* 投稿フォームのビュー崩れを解消 */
+.field_with_errors {
+  display: contents;
+}
